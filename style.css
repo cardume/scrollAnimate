@@ -1,0 +1,17 @@
+body {
+	height: 5000px;
+}
+
+.animate {
+	width: 100px;
+	height: 100px;
+	position: fixed;
+	top: 50%;
+	background: #000;
+}
+
+.debug {
+	position: fixed;
+	top: 10px;
+	left: 10px;
+}

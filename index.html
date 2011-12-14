@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>scrollanimate</title>
+<link href="style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script type="text/javascript" src="jquery.scrollAnimate.js"></script>
+</head>
+<body>
+
+<div class="animate">
+</div>
+
+<div class="debug"></div>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+	$('.animate').scrollAnimate({
+		startScroll: 500,
+		endScroll: 1500,
+		cssProperty: 'left',
+		before: 5,
+		after: 400
+	});
+
+});
+
+</script>
+
+</body>
+</html>
