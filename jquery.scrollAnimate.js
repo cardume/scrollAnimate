@@ -83,26 +83,20 @@
 
 					if(params.cssProperty == 'transform') {
 
-						var currentTransform = before + (after - before) * scrollPercentage;
+						var currentTransformValue = before + (after - before) * scrollPercentage;
 
-						if(params.before.indexOf('rotate') != -1) {
+						if(params.before.indexOf('rotate') != -1)
+							var currentTransform = 'rotate(' + currentTransformValue + 'deg)';
 
-							currentCss[params.cssProperty] = 'rotate(' + currentTransform + 'deg)';
-							currentCss['-moz-transform'] = 'rotate(' + currentTransform + 'deg)';
-							currentCss['-webkit-transform'] = 'rotate(' + currentTransform + 'deg)';
+						else if(params.before.indexOf('skew') != -1)
+							var currentTransform = 'skew(' + currentTransformValue + 'deg)';
 
-						} else if(params.before.indexOf('skew') != -1) {
+						else if(params.before.indexOf('scale') != -1)
+							var currentTransform = 'scale(' + currentTransform + ')';
 
-							currentCss[params.cssProperty] = 'skew(' + currentTransform + 'deg)';
-							currentCss['-moz-transform'] = 'skew(' + currentTransform + 'deg)';
-							currentCss['-webkit-transform'] = 'skew(' + currentTransform + 'deg)';
-
-						} else if(params.before.indexOf('scale') != -1) {
-
-							currentCss[params.cssProperty] = 'scale(' + currentTransform + ')';
-							currentCss['-moz-transform'] = 'scale(' + currentTransform + ')';
-							currentCss['-webkit-transform'] = 'scale(' + currentTransform + ')';
-						}
+						currentCss[params.cssProperty] = currentTransform;
+						currentCss['-moz-transform'] = currentTransform;
+						currentCss['-webkit-transform'] = currentTransform;
 
 						element.css(currentCss);
 
