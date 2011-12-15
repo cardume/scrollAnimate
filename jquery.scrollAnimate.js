@@ -93,7 +93,7 @@
 							var currentTransform = 'skew(' + currentTransformValue + 'deg)';
 
 						else if(params.before.indexOf('scale') != -1)
-							var currentTransform = 'scale(' + currentTransform + ')';
+							var currentTransform = 'scale(' + currentTransformValue + ')';
 
 						currentCss[params.cssProperty] = currentTransform;
 						currentCss['-moz-transform'] = currentTransform;
