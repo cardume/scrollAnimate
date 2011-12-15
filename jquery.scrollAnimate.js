@@ -2,7 +2,7 @@
 
 	$.fn.scrollAnimate = function(params) {
 
-		params = $.extend({ startScroll: 0, endScroll: 0, cssProperty: '', before: 0, after: 0 }, params);
+		params = $.extend({ scrollType: 'vertical', startScroll: 0, endScroll: 0, cssProperty: '', before: 0, after: 0 }, params);
 
 		var scrollRange = params.endScroll - params.startScroll;
 
@@ -30,7 +30,11 @@
 
 			function scrollAnimate() {
 
-				var scroll = $(window).scrollTop();
+				if(params.scrollType == 'vertical')
+					var scroll = $(window).scrollTop();
+				else
+					var scroll = $(window).scrollLeft();
+
 				var scrollPercentage = (scroll - params.startScroll) / scrollRange;
 
 				$('.debug').text('scroll: ' + scroll + ' / scrollRange: ' + scrollRange + ' / scrollPercentage: ' + scrollPercentage);

@@ -20,12 +20,14 @@
 $(document).ready(function() {
 
 	$('.animate').scrollAnimate({
+		scrollType: 'vertical',
 		startScroll: 500,
 		endScroll: 1500,
 		cssProperty: 'left',
 		before: 5,
 		after: 400
 	}).scrollAnimate({
+		scrollType: 'horizontal',
 		startScroll: 500,
 		endScroll: 1500,
 		cssProperty: 'opacity',
