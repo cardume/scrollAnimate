@@ -3,20 +3,44 @@ body {
 	height: 5000px;
 }
 
-.animate {
+.vertical {
 	width: 100px;
 	height: 100px;
 	position: fixed;
-	top: 50%;
-	background: #000;
+	top: 0;
+	background: #00ff00;
 }
 
-.animate2 {
+.horizontal {
 	width: 100px;
 	height: 100px;
 	position: fixed;
-	top: 70%;
+	top: 120px;
 	background-color: #ff0000;
+}
+
+.rotate {
+	width: 100px;
+	height: 100px;
+	position: fixed;
+	top: 240px;
+	background-color: #0000ff;
+}
+
+.skew {
+	width: 100px;
+	height: 100px;
+	position: fixed;
+	top: 360px;
+	background-color: #00ffff;
+}
+
+.scale {
+	width: 100px;
+	height: 100px;
+	position: fixed;
+	top: 480px;
+	background-color: #ffff00;
 }
 
 .debug {

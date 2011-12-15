@@ -9,38 +9,60 @@
 </head>
 <body>
 
-<div class="animate"></div>
+<div class="vertical">Vertical<br/>animate left position</div>
 
-<div class="animate2"></div>
+<div class="horizontal">Horizontal<br/>animate opacity</div>
 
-<div class="debug"></div>
+<div class="rotate">Vertical<br/>rotate (css3 transform)</div>
+
+<div class="skew">Vertical<br/>skew (css3 transform)</div>
+
+<div class="scale">Vertical<br/>scale (css3 transform)</div>
 
 <script type="text/javascript">
 
 $(document).ready(function() {
 
-	$('.animate').scrollAnimate({
+	$('.vertical').scrollAnimate({
 		scrollType: 'vertical',
 		startScroll: 500,
 		endScroll: 1500,
 		cssProperty: 'left',
 		before: 5,
 		after: 400
-	}).scrollAnimate({
+	})
+
+	$('.horizontal').scrollAnimate({
 		scrollType: 'horizontal',
 		startScroll: 500,
 		endScroll: 1500,
 		cssProperty: 'opacity',
-		before: .1,
-		after: 1
+		before: .8,
+		after: 0
 	});
 
-	$('.animate2').scrollAnimate({
-		startScroll: 500,
+	$('.rotate').scrollAnimate({
+		startScroll: 0,
 		endScroll: 1000,
-		cssProperty: 'left',
-		before: 5,
-		after: 400
+		cssProperty: 'transform',
+		before: 'rotate(0deg)',
+		after: 'rotate(360deg)'
+	});
+
+	$('.skew').scrollAnimate({
+		startScroll: 0,
+		endScroll: 1000,
+		cssProperty: 'transform',
+		before: 'skew(0deg)',
+		after: 'skew(90deg)'
+	});
+
+	$('.scale').scrollAnimate({
+		startScroll: 0,
+		endScroll: 1000,
+		cssProperty: 'transform',
+		before: 'scale(1)',
+		after: 'scale(2)',
 	});
 
 });

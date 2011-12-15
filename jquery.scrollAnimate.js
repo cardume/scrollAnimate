@@ -9,7 +9,6 @@
 		var element = $(this);
 
 		// create objects literal and assign the variable property for before and after
-
 		var cssArgsBefore = {};
 		cssArgsBefore[params.cssProperty] = params.before;
 
@@ -17,6 +16,41 @@
 		cssArgsAfter[params.cssProperty] = params.after;
 
 		var currentCss = {};
+
+		// get before and after value for css3 transform
+		if(params.cssProperty == 'transform') {
+
+			// set transform webkit and moz fallbacks
+			cssArgsBefore['-webkit-transform'] = params.before;
+			cssArgsAfter['-webkit-transform'] = params.after;
+			cssArgsBefore['-moz-transform'] = params.before;
+			cssArgsAfter['-moz-transform'] = params.after;
+
+			// support rotate and skew
+			if(params.before.indexOf('deg') != -1) {
+
+				var before = params.before.split('(');
+				before = before[1].split('deg');
+				before = parseInt(before[0]);
+
+				var after = params.after.split('(');
+				after = after[1].split('deg');
+				after = parseInt(after[0]);
+			} else
+			// support scale
+			if(params.before.indexOf('scale') != -1) {
+
+				var before = params.before.split('(');
+				before = before[1].split(')');
+				before = parseInt(before[0]);
+
+				var after = params.after.split('(');
+				after = after[1].split(')');
+				after = parseInt(after[0]);
+
+			}
+
+		}
 
 		this.each(function() {
 
@@ -37,8 +71,6 @@
 
 				var scrollPercentage = (scroll - params.startScroll) / scrollRange;
 
-				$('.debug').text('scroll: ' + scroll + ' / scrollRange: ' + scrollRange + ' / scrollPercentage: ' + scrollPercentage);
-
 				if(scroll < params.startScroll) {
 
 					element.css(cssArgsBefore);
@@ -47,11 +79,39 @@
 
 					element.css(cssArgsAfter);
 
-				} else {					
+				} else {
 
-					currentCss[params.cssProperty] = params.before + (params.after - params.before) * scrollPercentage;
+					if(params.cssProperty == 'transform') {
 
-					element.css(currentCss);
+						var currentTransform = before + (after - before) * scrollPercentage;
+
+						if(params.before.indexOf('rotate') != -1) {
+
+							currentCss[params.cssProperty] = 'rotate(' + currentTransform + 'deg)';
+							currentCss['-moz-transform'] = 'rotate(' + currentTransform + 'deg)';
+							currentCss['-webkit-transform'] = 'rotate(' + currentTransform + 'deg)';
+
+						} else if(params.before.indexOf('skew') != -1) {
+
+							currentCss[params.cssProperty] = 'skew(' + currentTransform + 'deg)';
+							currentCss['-moz-transform'] = 'skew(' + currentTransform + 'deg)';
+							currentCss['-webkit-transform'] = 'skew(' + currentTransform + 'deg)';
+
+						} else if(params.before.indexOf('scale') != -1) {
+
+							currentCss[params.cssProperty] = 'scale(' + currentTransform + ')';
+							currentCss['-moz-transform'] = 'scale(' + currentTransform + ')';
+							currentCss['-webkit-transform'] = 'scale(' + currentTransform + ')';
+						}
+
+						element.css(currentCss);
+
+					} else {
+
+						currentCss[params.cssProperty] = params.before + (params.after - params.before) * scrollPercentage;
+						element.css(currentCss);
+
+					}
 
 				}
 
