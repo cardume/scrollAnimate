@@ -11,22 +11,19 @@
 		// create objects literal and assign the variable property for before and after
 		var cssArgsBefore = {};
 		cssArgsBefore[params.cssProperty] = params.before;
-
 		var cssArgsAfter = {};
 		cssArgsAfter[params.cssProperty] = params.after;
 
-		var currentCss = {};
-
-		// get before and after value for css3 transform
+		// setup css3 transform
 		if(params.cssProperty == 'transform') {
 
-			// set transform webkit and moz fallbacks
+			// set css3 transform webkit and moz fallbacks
 			cssArgsBefore['-webkit-transform'] = params.before;
 			cssArgsAfter['-webkit-transform'] = params.after;
 			cssArgsBefore['-moz-transform'] = params.before;
 			cssArgsAfter['-moz-transform'] = params.after;
 
-			// support rotate and skew
+			// get int from css3 transform rotate and skew
 			if(params.before.indexOf('deg') != -1) {
 
 				var before = params.before.split('(');
@@ -36,8 +33,10 @@
 				var after = params.after.split('(');
 				after = after[1].split('deg');
 				after = parseInt(after[0]);
+
 			} else
-			// support scale
+
+			// get int from css3 transform scale
 			if(params.before.indexOf('scale') != -1) {
 
 				var before = params.before.split('(');
@@ -51,6 +50,8 @@
 			}
 
 		}
+
+		var currentCss = {};
 
 		this.each(function() {
 
