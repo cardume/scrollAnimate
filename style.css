@@ -10,6 +10,14 @@ body {
 	background: #000;
 }
 
+.animate2 {
+	width: 100px;
+	height: 100px;
+	position: fixed;
+	top: 70%;
+	background-color: #ff0000;
+}
+
 .debug {
 	position: fixed;
 	top: 10px;

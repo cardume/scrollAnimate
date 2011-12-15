@@ -9,8 +9,9 @@
 </head>
 <body>
 
-<div class="animate">
-</div>
+<div class="animate"></div>
+
+<div class="animate2"></div>
 
 <div class="debug"></div>
 
@@ -21,6 +22,22 @@ $(document).ready(function() {
 	$('.animate').scrollAnimate({
 		startScroll: 500,
 		endScroll: 1500,
+		cssProperty: 'left',
+		before: 5,
+		after: 400
+	});
+
+	$('.animate').scrollAnimate({
+		startScroll: 500,
+		endScroll: 1500,
+		cssProperty: 'opacity',
+		before: .1,
+		after: 1
+	});
+
+	$('.animate2').scrollAnimate({
+		startScroll: 500,
+		endScroll: 1000,
 		cssProperty: 'left',
 		before: 5,
 		after: 400
