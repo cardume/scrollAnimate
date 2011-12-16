@@ -86,6 +86,30 @@ $(document).ready(function() {
 		cssProperty: 'left',
 		before: -600,
 		after: 700
+	}).scrollAnimate({
+		startFromElement: '.content2',
+		scrollType: 'vertical',
+		startScroll: 50,
+		endScroll: 500,
+		cssProperty: 'transform',
+		before: 'rotate(0deg)',
+		after: 'rotate(720deg)'
+	}).scrollAnimate({
+		startFromElement: '.content2',
+		scrollType: 'vertical',
+		startScroll: 50,
+		endScroll: 250,
+		cssProperty: 'top',
+		before: 0,
+		after: -300
+	}).scrollAnimate({
+		startFromElement: '.content2',
+		scrollType: 'vertical',
+		startScroll: 250,
+		endScroll: 500,
+		cssProperty: 'top',
+		before: -300,
+		after: 0
 	});
 
 });

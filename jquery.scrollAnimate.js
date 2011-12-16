@@ -21,7 +21,6 @@
 
 			startingElementOffset = startingElement.offset();
 			startingElementOffsetTop = startingElementOffset.top;
-			alert(startingElementOffsetTop);
 			startingElementOffsetLeft = startingElementOffset.left;
 
 			var windowWidth = $(window).width();
@@ -100,8 +99,6 @@
 					if(params.startFromElement) {
 
 						scroll = scroll - scrollFromTop;
-
-						$('.debug').text(startingElementOffsetTop);
 
 					}
 
