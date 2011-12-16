@@ -48,3 +48,28 @@ body {
 	top: 10px;
 	left: 10px;
 }
+
+
+
+/* START FROM ELEMENT */
+
+body.startfromelement {
+	width: auto;
+	height: auto;
+}
+
+.wrap {
+	width: 500px;
+	margin: 0 auto;
+}
+
+.content2 {
+	position: relative;
+}
+
+.content2 .animate {
+	width: 100px;
+	height: 100px;
+	background-color: #000;
+	position: absolute;
+}

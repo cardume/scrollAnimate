@@ -2,7 +2,7 @@
 
 	$.fn.scrollAnimate = function(params) {
 
-		params = $.extend({ scrollType: 'vertical', startScroll: 0, endScroll: 0, cssProperty: '', before: 0, after: 0 }, params);
+		params = $.extend({ startFromElement: false, scrollType: 'vertical', startScroll: 0, endScroll: 0, cssProperty: '', before: 0, after: 0 }, params);
 
 		var scrollRange = params.endScroll - params.startScroll;
 
@@ -13,6 +13,34 @@
 		cssArgsBefore[params.cssProperty] = params.before;
 		var cssArgsAfter = {};
 		cssArgsAfter[params.cssProperty] = params.after;
+
+		// setup startFromElement
+		if(params.startFromElement) {
+
+			startingElement = $(params.startFromElement);
+
+			startingElementOffset = startingElement.offset();
+			startingElementOffsetTop = startingElementOffset.top;
+			alert(startingElementOffsetTop);
+			startingElementOffsetLeft = startingElementOffset.left;
+
+			var windowWidth = $(window).width();
+			var windowHeight = $(window).height();
+
+			var scrollFromTop = startingElementOffsetTop - windowHeight;
+			var scrollFromLeft = startingElementOffsetLeft - windowWidth;
+
+			$(window).bind('resize', function() {
+
+				windowWidth = $(window).width();
+				windowHeight = $(window).height();
+
+				scrollFromTop = startingElementOffsetTop - windowHeight;
+				scrollFromLeft = startingElementOffsetLeft - windowWidth;
+
+			});
+
+		}
 
 		// setup css3 transform
 		if(params.cssProperty == 'transform') {
@@ -65,10 +93,29 @@
 
 			function scrollAnimate() {
 
-				if(params.scrollType == 'vertical')
+				if(params.scrollType == 'vertical') {
+
 					var scroll = $(window).scrollTop();
-				else
+
+					if(params.startFromElement) {
+
+						scroll = scroll - scrollFromTop;
+
+						$('.debug').text(startingElementOffsetTop);
+
+					}
+
+				} else if(params.scrollType == 'horizontal') {
+
 					var scroll = $(window).scrollLeft();
+
+					if(params.startFromElement) {
+
+						scroll = scroll - scrollFromLeft;
+
+					}
+
+				}
 
 				var scrollPercentage = (scroll - params.startScroll) / scrollRange;
 
