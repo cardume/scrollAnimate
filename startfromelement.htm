@@ -78,6 +78,39 @@
 
 $(document).ready(function() {
 
+	$('.wrap').scrollAnimate({
+		startScroll: 0,
+		endScroll: 500,
+		cssProperty: 'transform',
+		before: 'scale(1.5)',
+		after: 'scale(1)'
+	});
+
+	$('.content2 h2').scrollAnimate({
+		startFromElement: '.content2',
+		startScroll: 0,
+		endScroll: 500,
+		cssProperty: 'opacity',
+		before: 0,
+		after: 1
+	});
+
+	$('.content2 p').scrollAnimate({
+		startFromElement: '.content2',
+		startScroll: 100,
+		endScroll: 400,
+		cssProperty: 'opacity',
+		before: 0,
+		after: 1
+	}).scrollAnimate({
+		startFromElement: '.content2',
+		startScroll: 100,
+		endScroll: 400,
+		cssProperty: 'margin-left',
+		before: -600,
+		after: 0
+	});
+
 	$('.animate').scrollAnimate({
 		startFromElement: '.content2',
 		scrollType: 'vertical',

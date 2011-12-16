@@ -55,11 +55,11 @@
 
 				var before = params.before.split('(');
 				before = before[1].split('deg');
-				before = parseInt(before[0]);
+				before = parseFloat(before[0]);
 
 				var after = params.after.split('(');
 				after = after[1].split('deg');
-				after = parseInt(after[0]);
+				after = parseFloat(after[0]);
 
 			} else
 
@@ -68,11 +68,11 @@
 
 				var before = params.before.split('(');
 				before = before[1].split(')');
-				before = parseInt(before[0]);
+				before = parseFloat(before[0]);
 
 				var after = params.after.split('(');
 				after = after[1].split(')');
-				after = parseInt(after[0]);
+				after = parseFloat(after[0]);
 
 			}
 
