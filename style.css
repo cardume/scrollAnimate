@@ -35,8 +35,9 @@ body {
 #header {
 	width: 960px;
 	margin: 100px auto 180px;
-	height: 186px;
+	height: 290px;
 	position: relative;
+	overflow: hidden;
 }
 
 #header .head {
