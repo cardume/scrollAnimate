@@ -125,19 +125,19 @@ $(document).ready(function() {
 		var elementClicked = $(this).attr("href");
 		if(elementClicked == '#top') var destination = 0;
 		else var destination = $(elementClicked).offset().top;
-		$("html,body").stop().animate({scrollTop: destination}, 'slow');
+		$("html,body").stop().animate({scrollTop: destination}, 800);
 		return false;
 	});
 
 	$('#header').scrollAnimate({
 		startScroll: 0,
-		endScroll: 150,
+		endScroll: 250,
 		cssProperty: 'top',
 		before: 0,
 		after: 60
 	}).scrollAnimate({
 		startScroll: 0,
-		endScroll: 150,
+		endScroll: 250,
 		cssProperty: 'opacity',
 		before: 1,
 		after: 0
@@ -145,7 +145,7 @@ $(document).ready(function() {
 
 	$('#header h1').scrollAnimate({
 		startScroll: 0,
-		endScroll: 150,
+		endScroll: 250,
 		cssProperty: 'transform',
 		before: 'rotate(0deg)',
 		after: 'rotate(-40deg)'
@@ -159,21 +159,21 @@ $(document).ready(function() {
 
 	$('#header h2').scrollAnimate({
 		startScroll: 0,
-		endScroll: 150,
+		endScroll: 250,
 		cssProperty: 'transform',
 		before: 'rotate(0deg)',
 		after: 'rotate(40deg)'
 	});
 
 	$('.backtotop').scrollAnimate({
-		startScroll: 50,
-		endScroll: 200,
+		startScroll: 200,
+		endScroll: 300,
 		cssProperty: 'right',
-		before: -100,
+		before: -150,
 		after: 50
 	}).scrollAnimate({
-		startScroll: 50,
-		endScroll: 200,
+		startScroll: 200,
+		endScroll: 300,
 		cssProperty: 'opacity',
 		before: 0,
 		after: 1
