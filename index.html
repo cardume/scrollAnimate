@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>scrollanimate</title>
+<link href="http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic" rel="stylesheet" type="'text/css">
+<link href="style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script type="text/javascript" src="jquery.scrollAnimate.js"></script>
+</head>
+<body>
+
+<div id="header">
+
+	<div class="head">
+		<h1>scrollAnimate</h1>
+		<h2>A jQuery plugin to animate HTML elements on scroll event</h2>
+
+		<ul class="first-nav">
+			<li><a href="#about">About</a></li>
+			<li><a href="#download">Download</a></li>
+			<li><a href="#features">Features</a></li>
+			<li><a href="#examples">Examples</a></li>
+			<li><a href="#documentation">Documentation</a></li>
+			<li><a href="#license">License terms</a></li>
+		</ul>
+	</div>
+
+	<h3>a project by Cardume</h3>
+
+</div>
+
+<div id="nav">
+	<ul>
+		<li><a href="#about">About</a></li>
+		<li><a href="#download">Download</a></li>
+		<li><a href="#features">Features</a></li>
+		<li><a href="#examples">Examples</a></li>
+		<li><a href="#documentation">Documentation</a></li>
+		<li><a href="#license">License terms</a></li>
+	</ul>
+</div>
+
+<a class="backtotop" href="#top">back to top</a>
+
+<div class="content">
+
+	<div id="about" class="content-box">
+
+		<h2>About</h2>
+		<p>Parallax or not, this plugin gives lots of feature to work CSS animation on scroll event, given by jQuery.</p>
+
+	</div>
+
+	<div id="download" class="content-box">
+
+		<h2>Download</h2>
+
+		<ul>
+			<li class="tarball" ><a href="https://github.com/Cardume/scrollAnimate/tarball/master" target="_blank">Tarball</a></li>
+			<li class="zip"><a href="https://github.com/Cardume/scrollAnimate/zipball/master" target="_blank">Zip</a></li>
+			<li class="github"><a href="https://github.com/Cardume/scrollAnimate" target="_blank">Fork us on GitHub</a></li>
+		</ul>
+
+	</div>
+
+	<div id="features" class="content-box">
+
+		<h2>Features</h2>
+
+		<ul>
+
+			<li>Vertical and horizontal scrolling support</li>
+			<li>Multiple CSS animations for the same element</li>
+			<li>CSS3 Transform (rotate, skew and scale)</li>
+			<li>Start CSS animation when specific element appears on screen</li>
+			<li><strong>CSS Properties</strong>
+				<ul>
+					<li>top</li>
+					<li>right</li>
+					<li>bottom</li>
+					<li>left</li>
+					<li>margin-top</li>
+					<li>margin-right</li>
+					<li>margin-bottom</li>
+					<li>margin-left</li>
+					<li>opacity</li>
+					<li>font-size</li>
+					<li class="css3">transform: rotate</li>
+					<li class="css3">transform: skew</li>
+					<li class="css3">transform: scale</li>
+				</ul>
+			</li>
+
+		</ul>
+
+	</div>
+
+	<div id="examples" class="content-box">
+
+		<h2>Examples</h2>
+
+	</div>
+
+	<div id="documentation" class="content-box">
+
+		<h2>Documentation</h2>
+
+	</div>
+
+	<div id="license" class="content-box">
+
+		<h2>License Terms</h2>
+
+	</div>
+
+</div>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+
+	$('#nav a, .first-nav a, .backtotop').click(function() {
+		var elementClicked = $(this).attr("href");
+		if(elementClicked == '#top') var destination = 0;
+		else var destination = $(elementClicked).offset().top;
+		$("html,body").stop().animate({scrollTop: destination}, 800);
+		return false;
+	});
+
+	$('#header').scrollAnimate({
+		startScroll: 0,
+		endScroll: 250,
+		cssProperty: 'top',
+		before: 0,
+		after: 60
+	}).scrollAnimate({
+		startScroll: 0,
+		endScroll: 250,
+		cssProperty: 'opacity',
+		before: 1,
+		after: 0
+	});
+
+	$('#header h1').scrollAnimate({
+		startScroll: 0,
+		endScroll: 250,
+		cssProperty: 'transform',
+		before: 'rotate(0deg)',
+		after: 'rotate(-40deg)'
+	}).scrollAnimate({
+		startScroll: 0,
+		endScroll: 150,
+		cssProperty: 'margin-top',
+		before: 120,
+		after: -100
+	});
+
+	$('#header h2').scrollAnimate({
+		startScroll: 0,
+		endScroll: 250,
+		cssProperty: 'transform',
+		before: 'rotate(0deg)',
+		after: 'rotate(40deg)'
+	});
+
+	$('.backtotop').scrollAnimate({
+		startScroll: 200,
+		endScroll: 300,
+		cssProperty: 'right',
+		before: -150,
+		after: 50
+	}).scrollAnimate({
+		startScroll: 200,
+		endScroll: 300,
+		cssProperty: 'opacity',
+		before: 0,
+		after: 1
+	});
+
+	$('#nav').scrollAnimate({
+		startScroll: 200,
+		endScroll: 300,
+		cssProperty: 'left',
+		before: -150,
+		after: 40
+	});
+
+	$('.content').scrollAnimate({
+		startScroll: 200,
+		endScroll: 450,
+		cssProperty: 'opacity',
+		before: 0,
+		after: 1
+	});
+
+});
+
+</script>
+
+</body>
+</html>
